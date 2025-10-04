@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ราคาทองวันนี้ - อัปเดตล่าสุด</title>
+    <title>ราคาทองวันนี้ (อัปเดตทุกวัน) - ประเทศไทย</title>
     
     <style>
         body {
@@ -13,42 +13,47 @@
             background-color: #f4f4f9;
         }
         .container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             background-color: #ffffff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         h1 {
-            color: #CC9900; /* สีทอง */
+            color: #D4AF37; /* สีทองเข้ม */
+            margin-bottom: 5px;
         }
-        .widget-title {
-            margin-top: 30px;
-            font-size: 1.2em;
-            color: #333;
+        .source-info {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 25px;
+        }
+        .gold-widget-container {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>ราคาทองคำแท่งและทองรูปพรรณวันนี้</h1>
-        <p>ข้อมูลอ้างอิงจากแหล่งที่มาภายนอก (โปรดตรวจสอบเวลาอัปเดต)</p>
+        <h1>ราคาทองคำแท่ง 96.5% และทองรูปพรรณวันนี้</h1>
+        <p class="source-info">อัปเดตตามประกาศราคาทองในประเทศ (โดยปกติอัปเดตรายวัน)</p>
 
-        <div class="widget-title">ราคาทองคำแท่ง 96.5% และทองรูปพรรณ (บาท)</div>
-        <div id="ig_goldprice_widget"></div>
+        <div class="gold-widget-container">
+            <div id="ylg-gold-price-widget"></div>
 
-        <script>
-            (function() {
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.async = true;
-                script.src = 'https://www.intergold.co.th/widgets/goldprice/ig_goldprice_widget.js?w_width=100%&w_height=300px&w_currency=THB&w_unit=Baht&w_showtime=1&w_barcolor=CC9900&w_chart=0&w_type=0';
-                document.getElementById('ig_goldprice_widget').appendChild(script);
-            })();
-        </script>
+            <script type="text/javascript" src="https://www.ylgbullion.co.th/widget/gold-price.js"></script>
+            <script type="text/javascript">
+                new YLGGoldPriceWidget("ylg-gold-price-widget", {
+                    'width': 600, 
+                    'type': 'THGOLD', 
+                    'skin': 'ylg',
+                    'fontfamily': 'Tahoma'
+                });
+            </script>
         </div>
-    
-</body>
-</html>
+        <p style="margin-top: 20px; font-size: 0.8em; color: #555;">หากราคาทองไม่แสดงผล กรุณาลอง Refresh หรือตรวจสอบการตั้งค่าเบราว์เซอร์</p>
+    </div>
