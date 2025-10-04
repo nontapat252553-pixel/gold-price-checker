@@ -57,10 +57,6 @@
         .buy-price {
             color: #4CAF50; /* สีเขียว */
         }
-        .loading {
-            color: #007bff;
-            font-size: 1.5em;
-        }
         .update-time {
             font-size: 0.9em;
             color: #777;
@@ -74,5 +70,57 @@
         <h1>ราคาทองคำแท่ง 96.5% วันนี้</h1>
         
         <div id="gold-price-output">
-            <div class="loading">กำลังโหลดข้อมูลราคาปัจจุบัน...</div>
-        </div>
+            </div>
+
+        <div id="update-time-output" class="update-time"></div>
+    </div>
+
+    <script>
+        // ฟังก์ชันเพื่อจัดรูปแบบตัวเลขให้มีจุลภาค
+        function formatCurrency(number) {
+            return parseFloat(number).toLocaleString('th-TH', { 
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        function displayGoldPrice() {
+            const outputElement = document.getElementById('gold-price-output');
+            const timeElement = document.getElementById('update-time-output');
+            
+            // **ข้อมูลตัวอย่าง (Dummy Data)**
+            // *คุณสามารถเปลี่ยนตัวเลขเหล่านี้ได้ตามต้องการ*
+            const data = {
+                time: "10:45 น.",
+                date: "04/10/2568",
+                gold_bar: {
+                    sell: 34500.00, // ตัวอย่างราคาขายออก
+                    buy: 34400.00  // ตัวอย่างราคารับซื้อ
+                }
+            };
+
+            const priceOutput = 
+                `<div class="price-item">
+                    <div>
+                        <div class="price-label">ขายออก</div>
+                        <div class="price-value-box sell-price">${formatCurrency(data.gold_bar.sell)}</div>
+                        <div class="price-label">บาท</div>
+                    </div>
+                    <div>
+                        <div class="price-label">รับซื้อ</div>
+                        <div class="price-value-box buy-price">${formatCurrency(data.gold_bar.buy)}</div>
+                        <div class="price-label">บาท</div>
+                    </div>
+                </div>`;
+
+            outputElement.innerHTML = priceOutput;
+            timeElement.innerHTML = `อัปเดตล่าสุด: ${data.time} (${data.date})`;
+        }
+
+        // เรียกใช้ฟังก์ชันแสดงผลทันที
+        displayGoldPrice();
+        
+    </script>
+    
+</body>
+</html>
