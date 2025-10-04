@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ราคาทองคำแท่งล่าสุด</title>
+    <title>ราคาทองคำปัจจุบัน (ละเอียด)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,14 +11,14 @@
             padding: 0;
             text-align: center;
             background-color: #f0f0f0;
-            /* ใช้ Flexbox เพื่อจัดกึ่งกลางทั้งหน้าจอ */
+            /* จัดกึ่งกลางหน้าจอ */
             display: flex;
             justify-content: center; 
             align-items: center; 
             min-height: 100vh; 
         }
         .container {
-            max-width: 650px;
+            max-width: 700px;
             width: 90%;
             background-color: #ffffff;
             padding: 30px;
@@ -28,52 +28,58 @@
         h1 {
             color: #AA8C3D; /* สีทอง */
             font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-        .price-item {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
-            padding: 15px 0;
-            border-top: 1px solid #eee;
-        }
-        .price-item:last-child {
-            border-bottom: 1px solid #eee;
-        }
-        .price-label {
-            font-size: 1.4em;
-            color: #555;
-            font-weight: bold;
-        }
-        .price-value-box {
-            font-size: 3.0em; /* ขยายขนาดตัวเลขให้ใหญ่ที่สุด */
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-        }
-        .sell-price {
-            color: #C0A04C; /* สีทองเข้ม */
-        }
-        .buy-price {
-            color: #008000; /* สีเขียว */
+            margin-bottom: 5px;
         }
         .update-time {
-            font-size: 1.0em;
+            font-size: 1.1em;
             color: #777;
-            margin-top: 25px;
+            margin-bottom: 25px;
             font-weight: 600;
+        }
+        .price-section {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 10px;
+            text-align: left;
+        }
+        .gold-type-header {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #C0A04C;
+            background-color: #fffaf0; /* สีเหลืองอ่อน */
+            padding: 10px;
+            margin: -10px -10px 15px -10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            font-size: 1.1em;
+        }
+        .price-row:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        .label {
+            font-weight: bold;
+            color: #333;
+        }
+        .value {
+            font-weight: bold;
+            color: #008000; /* สีเขียวเหมือนในภาพ */
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>ราคาทองคำแท่ง 96.5% อ้างอิงวันนี้</h1>
+        <h1>ราคาทองคำประเทศไทย</h1>
+        <div id="update-time-output" class="update-time"></div>
         
         <div id="gold-price-output">
             </div>
-
-        <div id="update-time-output" class="update-time"></div>
     </div>
 
     <script>
@@ -89,39 +95,4 @@
             const outputElement = document.getElementById('gold-price-output');
             const timeElement = document.getElementById('update-time-output');
             
-            // **ข้อมูลราคาอ้างอิง (Manual Input)**
-            // *เมื่อราคาเปลี่ยน คุณต้องเข้ามาแก้ไขตัวเลข 2 ตัวนี้เอง*
-            const data = {
-                time: "18:30 น.", // อัพเดทเวลาให้ตรงกับที่คุณแก้ไข
-                date: "04/10/2568",
-                gold_bar: {
-                    sell: 59450.00, // ราคาขายออก
-                    buy: 59350.00  // ราคารับซื้อ
-                }
-            };
-
-            const priceOutput = 
-                `<div class="price-item">
-                    <div>
-                        <div class="price-label">ขายออก</div>
-                        <div class="price-value-box sell-price">${formatCurrency(data.gold_bar.sell)}</div>
-                        <div class="price-label">บาท</div>
-                    </div>
-                    <div>
-                        <div class="price-label">รับซื้อ</div>
-                        <div class="price-value-box buy-price">${formatCurrency(data.gold_bar.buy)}</div>
-                        <div class="price-label">บาท</div>
-                    </div>
-                </div>`;
-
-            outputElement.innerHTML = priceOutput;
-            timeElement.innerHTML = `ข้อมูลอ้างอิงล่าสุด: ${data.time} (${data.date})`;
-        }
-
-        // เรียกใช้ฟังก์ชันแสดงผลทันที
-        displayGoldPrice();
-        
-    </script>
-    
-</body>
-</html>
+            // **ข้อมูลราคาตามภาพที่คุณ
