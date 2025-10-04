@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ราคาทองวันนี้ - อัปเดตล่าสุด</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #CC9900; /* สีทอง */
+        }
+        .widget-title {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ราคาทองคำแท่งและทองรูปพรรณวันนี้</h1>
+        <p>ข้อมูลอ้างอิงจากแหล่งที่มาภายนอก (โปรดตรวจสอบเวลาอัปเดต)</p>
+
+        <div class="widget-title">ราคาทองคำแท่ง 96.5% และทองรูปพรรณ (บาท)</div>
+        <div id="ig_goldprice_widget"></div>
+
+        <script>
+            (function() {
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.async = true;
+                script.src = 'https://www.intergold.co.th/widgets/goldprice/ig_goldprice_widget.js?w_width=100%&w_height=300px&w_currency=THB&w_unit=Baht&w_showtime=1&w_barcolor=CC9900&w_chart=0&w_type=0';
+                document.getElementById('ig_goldprice_widget').appendChild(script);
+            })();
+        </script>
+        </div>
+    
+</body>
+</html>
