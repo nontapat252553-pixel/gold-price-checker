@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เช็คราคาทองคำปัจจุบัน</title>
+    <title>เช็คราคาทองคำปัจจุบัน (MTS Gold)</title>
     
     <style>
         body {
@@ -21,7 +21,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         h1 {
-            color: #C0A04C; /* สีทอง */
+            color: #AA8C3D; /* สีทอง MTS */
             font-size: 1.8em;
             margin-bottom: 5px;
         }
@@ -30,30 +30,19 @@
             margin-bottom: 25px;
         }
         .widget-area {
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
+            /* Widget จะสร้างตารางราคาทองขึ้นมาในส่วนนี้ */
+            min-height: 250px; /* เพิ่มความสูงขั้นต่ำเพื่อรองรับตาราง */
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>ราคาทองคำปัจจุบัน (บาท)</h1>
-        <p class="info-text">ข้อมูลอัปเดตล่าสุดจากแหล่งที่มาที่เชื่อถือได้</p>
+        <h1>ราคาปัจจุบัน: ทองคำแท่งและทองรูปพรรณ (บาท)</h1>
+        <p class="info-text">ข้อมูลอัปเดตล่าสุดจาก MTS Gold</p>
 
         <div class="widget-area">
-            <div id="ylg-gold-price-widget"></div>
-
-            <script type="text/javascript" src="https://www.ylgbullion.co.th/widget/gold-price.js"></script>
-            <script type="text/javascript">
-                new YLGGoldPriceWidget("ylg-gold-price-widget", {
-                    'width': 600, 
-                    'type': 'THGOLD', // ตั้งค่าให้แสดงราคาทองไทย
-                    'skin': 'ylg',
-                    'fontfamily': 'Tahoma'
-                });
-            </script>
+            <script type="text/javascript" src="https://www.mtsgold.co.th/widgets/goldprice/mts_goldprice_widget.js?w_width=100%&w_height=250px&w_currency=THB&w_unit=Baht&w_showtime=1&w_barcolor=AA8C3D&w_chart=0&w_type=0"></script>
         </div>
         <p style="margin-top: 20px; font-size: 0.75em; color: #888;">ราคานี้อ้างอิงตามรอบการประกาศราคาของตลาดทองคำในประเทศ</p>
     </div>
