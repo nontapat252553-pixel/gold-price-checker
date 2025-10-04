@@ -3,35 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ราคาทองวันนี้ (อัปเดตทุกวัน) - ประเทศไทย</title>
+    <title>เช็คราคาทองคำปัจจุบัน</title>
     
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             text-align: center;
-            background-color: #f4f4f9;
+            background-color: #f0f0f0;
         }
         .container {
-            max-width: 700px;
-            margin: 0 auto;
+            max-width: 650px;
+            margin: 50px auto;
             background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         h1 {
-            color: #D4AF37; /* สีทองเข้ม */
+            color: #C0A04C; /* สีทอง */
+            font-size: 1.8em;
             margin-bottom: 5px;
         }
-        .source-info {
-            font-size: 0.9em;
-            color: #777;
+        .info-text {
+            color: #555;
             margin-bottom: 25px;
         }
-        .gold-widget-container {
+        .widget-area {
             border: 1px solid #ddd;
-            padding: 15px;
+            padding: 10px;
             border-radius: 5px;
         }
     </style>
@@ -39,21 +39,24 @@
 <body>
 
     <div class="container">
-        <h1>ราคาทองคำแท่ง 96.5% และทองรูปพรรณวันนี้</h1>
-        <p class="source-info">อัปเดตตามประกาศราคาทองในประเทศ (โดยปกติอัปเดตรายวัน)</p>
+        <h1>ราคาทองคำปัจจุบัน (บาท)</h1>
+        <p class="info-text">ข้อมูลอัปเดตล่าสุดจากแหล่งที่มาที่เชื่อถือได้</p>
 
-        <div class="gold-widget-container">
+        <div class="widget-area">
             <div id="ylg-gold-price-widget"></div>
 
             <script type="text/javascript" src="https://www.ylgbullion.co.th/widget/gold-price.js"></script>
             <script type="text/javascript">
                 new YLGGoldPriceWidget("ylg-gold-price-widget", {
                     'width': 600, 
-                    'type': 'THGOLD', 
+                    'type': 'THGOLD', // ตั้งค่าให้แสดงราคาทองไทย
                     'skin': 'ylg',
                     'fontfamily': 'Tahoma'
                 });
             </script>
         </div>
-        <p style="margin-top: 20px; font-size: 0.8em; color: #555;">หากราคาทองไม่แสดงผล กรุณาลอง Refresh หรือตรวจสอบการตั้งค่าเบราว์เซอร์</p>
+        <p style="margin-top: 20px; font-size: 0.75em; color: #888;">ราคานี้อ้างอิงตามรอบการประกาศราคาของตลาดทองคำในประเทศ</p>
     </div>
+    
+</body>
+</html>
