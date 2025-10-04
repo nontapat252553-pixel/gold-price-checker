@@ -3,48 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เช็คราคาทองคำปัจจุบัน (MTS Gold)</title>
-    
+    <title>ลิงก์เช็คราคาทองคำปัจจุบัน</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
-            background-color: #f0f0f0;
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f0; padding-top: 50px; }
+        .container { max-width: 600px; margin: auto; background-color: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { color: #AA8C3D; }
+        .gold-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background-color: #D4AF37; /* สีทอง */
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-        .container {
-            max-width: 650px;
-            margin: 50px auto;
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #AA8C3D; /* สีทอง MTS */
-            font-size: 1.8em;
-            margin-bottom: 5px;
-        }
-        .info-text {
-            color: #555;
-            margin-bottom: 25px;
-        }
-        .widget-area {
-            /* Widget จะสร้างตารางราคาทองขึ้นมาในส่วนนี้ */
-            min-height: 250px; /* เพิ่มความสูงขั้นต่ำเพื่อรองรับตาราง */
+        .gold-link:hover {
+            background-color: #C0A04C;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>ราคาปัจจุบัน: ทองคำแท่งและทองรูปพรรณ (บาท)</h1>
-        <p class="info-text">ข้อมูลอัปเดตล่าสุดจาก MTS Gold</p>
+        <h1>ตรวจสอบราคาทองคำปัจจุบัน (ประเทศไทย)</h1>
+        <p>เนื่องจากปัญหาการแสดงผล Widget ท่านสามารถคลิกปุ่มด้านล่างเพื่อไปยังแหล่งข้อมูลราคาทองคำล่าสุดได้โดยตรง</p>
 
-        <div class="widget-area">
-            <script type="text/javascript" src="https://www.mtsgold.co.th/widgets/goldprice/mts_goldprice_widget.js?w_width=100%&w_height=250px&w_currency=THB&w_unit=Baht&w_showtime=1&w_barcolor=AA8C3D&w_chart=0&w_type=0"></script>
-        </div>
-        <p style="margin-top: 20px; font-size: 0.75em; color: #888;">ราคานี้อ้างอิงตามรอบการประกาศราคาของตลาดทองคำในประเทศ</p>
+        <a href="https://www.goldtraders.or.th/" target="_blank" class="gold-link">
+            คลิกเพื่อดูราคาล่าสุดจากสมาคมค้าทองคำ
+        </a>
+        
+        <p style="margin-top: 30px; font-size: 0.8em; color: #555;">(ข้อมูลจะเปิดในแท็บใหม่)</p>
     </div>
     
 </body>
