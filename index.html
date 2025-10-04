@@ -3,58 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ลิงก์เช็คราคาทองคำปัจจุบัน</title>
+    <title>ราคาทองคำวันนี้ (รูปแบบสมาคมฯ)</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            background-color: #f0f0f0; 
-            padding-top: 50px; 
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f0f0f0;
         }
-        .container { 
-            max-width: 600px; 
-            margin: auto; 
-            background-color: #fff; 
-            padding: 40px; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        .container {
+            max-width: 750px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        h1 { 
-            color: #AA8C3D; 
+        h1 {
+            color: #AA8C3D;
+            font-size: 1.5em;
         }
-        .gold-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 50px; /* เพิ่ม padding ให้ปุ่มใหญ่ขึ้น */
-            background-color: #D4AF37; /* สีทอง */
-            color: white;
-            text-decoration: none;
-            font-size: 2.0em; /* ขยายขนาดตัวอักษรให้ใหญ่มาก */
-            font-weight: bold;
+        .price-display {
+            font-size: 1.1em;
+            line-height: 1.8;
+            padding: 15px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: left;
         }
-        .gold-link:hover {
-            background-color: #C0A04C;
+        .gold-type {
+            font-weight: bold;
+            color: #C0A04C;
+            display: block;
+            margin-top: 10px;
         }
-        .instructions {
-            margin-top: 15px;
-            font-size: 0.9em;
+        .price-value {
+            font-weight: bold;
+            color: #333;
+        }
+        .loading {
+            color: #007bff;
+        }
+        .update-time {
+            font-size: 0.8em;
             color: #777;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>ตรวจสอบราคาทองคำปัจจุบัน</h1>
-        <p>เนื่องจากปัญหาการแสดงผล Widget ท่านสามารถคลิกปุ่มด้านล่างเพื่อไปยังแหล่งข้อมูลราคาทองคำล่าสุดได้โดยตรง</p>
+        <h1>ราคาทองคำประเทศไทย (อ้างอิงตามประกาศล่าสุด)</h1>
+        
+        <div id="gold-price-output" class="price-display">
+            <span class="loading">กำลังโหลดข้อมูลราคาล่าสุด...</span>
+        </div>
 
-        <a href="https://www.goldtraders.or.th/" target="_blank" class="gold-link">
-            ราคา
-        </a>
-        <p class="instructions">คลิกที่ปุ่ม 'ราคา' เพื่อดูตารางราคาทองล่าสุดจากสมาคมค้าทองคำ (จะเปิดแท็บใหม่)</p>
+        <div id="update-time-output" class="update-time"></div>
     </div>
-    
-</body>
-</html>
+
+    <script>
+        const API_URL = 'https://api.example.com/thailand-gold-price'; // **คุณต้องเปลี่ยนเป็น API จริง**
+        const outputElement = document.getElementById('gold-price-output');
+        const timeElement = document.getElementById('update-time-output');
+
+        // ฟังก์ชันเพื่อจัดรูปแบบตัวเลขให้มีจุลภาค
+        function formatCurrency(number) {
+            return parseFloat(number).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        async function fetchGoldPrice() {
+            try {
+                // **หมายเหตุสำคัญ:**
+                // เนื่องจากไม่มี API สาธารณะฟรีสำหรับดึงข้อมูลราคาทองไทยแบบนี้โดยตรง
+                // โค้ดนี้จึงใช้ได้จริงเมื่อคุณหา API ที่เหมาะสมได้
+                // ในตัวอย่างนี้ เราจะใช้ข้อมูลตัวอย่างเพื่อแสดงผลลัพธ์ตามที่คุณต้องการ
+                
+                // สมมติว่า API ส่งข้อมูลดังนี้:
+                const data = {
+                    time: "10:30 AM",
+                    date: "04/10/2568",
+                    gold_bar: {
+                        sell: 59450.00,
+                        buy: 59350.00
+                    },
+                    ornament: {
+                        sell: 60250.00,
+                        tax_base: 58168.92
+                    }
+                };
+
+                // การแสดงผลตามรูปแบบที่คุณต้องการ
+                const goldBarOutput = 
+                    `<span class="gold-type">ทองคำแท่ง 96.5%</span>` +
+                    `ขายออก <span class="price-value">${formatCurrency(data.gold_bar.sell)}</span> บาท &nbsp; ` +
+                    `รับซื้อ <span class="price-value">${formatCurrency(data.gold_bar.buy)}</span> บาท`;
+
+                const ornamentOutput = 
+                    `<span class="gold-type">ทองรูปพรรณ 96.5%</span>` +
+                    `ขายออก <span class="price-value">${formatCurrency(data.ornament.sell)}</span> บาท &nbsp; ` +
+                    `ฐานภาษี <span class="price-value">${formatCurrency(data.ornament.tax_base)}</span> บาท`;
+
+                outputElement.innerHTML = goldBarOutput + "<br>" + ornamentOutput;
+                timeElement.innerHTML = `อัปเดตเมื่อ: ${data.time} | ${data.date}`;
+
+            } catch (error) {
+                console.error("Error fetching gold price:", error);
+                outputElement.innerHTML = "<span style='color: red;'>ไม่สามารถดึงข้อมูลราคาได้ โปรดตรวจสอบการเชื่อมต่อหรือ API</span>";
+            }
+        }
+
+        fetchGoldPrice();
+        // ตั้งเวลาดึงข้อมูลใหม่ทุก 5 นาที (ถ้าใช้ API จริง)
