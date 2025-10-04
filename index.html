@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ราคาทองคำปัจจุบัน (อยู่ตรงกลาง)</title>
+    <title>ราคาทองคำแท่งล่าสุด</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
             display: flex;
             justify-content: center; 
             align-items: center; 
-            min-height: 100vh; /* ทำให้ body สูงเต็มจอเพื่อจัดกึ่งกลางในแนวตั้ง */
+            min-height: 100vh; 
         }
         .container {
             max-width: 650px;
@@ -26,8 +26,8 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         h1 {
-            color: #AA8C3D;
-            font-size: 1.5em;
+            color: #AA8C3D; /* สีทอง */
+            font-size: 1.8em;
             margin-bottom: 20px;
         }
         .price-item {
@@ -41,33 +41,34 @@
             border-bottom: 1px solid #eee;
         }
         .price-label {
-            font-size: 1.2em;
+            font-size: 1.4em;
             color: #555;
             font-weight: bold;
         }
         .price-value-box {
-            font-size: 2.5em; /* ขนาดตัวเลขใหญ่มาก */
+            font-size: 3.0em; /* ขยายขนาดตัวเลขให้ใหญ่ที่สุด */
             font-weight: bold;
             display: block;
             margin-top: 10px;
         }
         .sell-price {
-            color: #C0A04C; /* สีทอง */
+            color: #C0A04C; /* สีทองเข้ม */
         }
         .buy-price {
-            color: #4CAF50; /* สีเขียว */
+            color: #008000; /* สีเขียว */
         }
         .update-time {
-            font-size: 0.9em;
+            font-size: 1.0em;
             color: #777;
-            margin-top: 20px;
+            margin-top: 25px;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>ราคาทองคำแท่ง 96.5% วันนี้</h1>
+        <h1>ราคาทองคำแท่ง 96.5% อ้างอิงวันนี้</h1>
         
         <div id="gold-price-output">
             </div>
@@ -76,7 +77,7 @@
     </div>
 
     <script>
-        // ฟังก์ชันเพื่อจัดรูปแบบตัวเลขให้มีจุลภาค
+        // ฟังก์ชันเพื่อจัดรูปแบบตัวเลขให้มีจุลภาคและทศนิยม
         function formatCurrency(number) {
             return parseFloat(number).toLocaleString('th-TH', { 
                 minimumFractionDigits: 2,
@@ -86,41 +87,4 @@
 
         function displayGoldPrice() {
             const outputElement = document.getElementById('gold-price-output');
-            const timeElement = document.getElementById('update-time-output');
-            
-            // **ข้อมูลตัวอย่าง (Dummy Data)**
-            // *คุณสามารถเปลี่ยนตัวเลขเหล่านี้ได้ตามต้องการ*
-            const data = {
-                time: "10:45 น.",
-                date: "04/10/2568",
-                gold_bar: {
-                    sell: 34500.00, // ตัวอย่างราคาขายออก
-                    buy: 34400.00  // ตัวอย่างราคารับซื้อ
-                }
-            };
-
-            const priceOutput = 
-                `<div class="price-item">
-                    <div>
-                        <div class="price-label">ขายออก</div>
-                        <div class="price-value-box sell-price">${formatCurrency(data.gold_bar.sell)}</div>
-                        <div class="price-label">บาท</div>
-                    </div>
-                    <div>
-                        <div class="price-label">รับซื้อ</div>
-                        <div class="price-value-box buy-price">${formatCurrency(data.gold_bar.buy)}</div>
-                        <div class="price-label">บาท</div>
-                    </div>
-                </div>`;
-
-            outputElement.innerHTML = priceOutput;
-            timeElement.innerHTML = `อัปเดตล่าสุด: ${data.time} (${data.date})`;
-        }
-
-        // เรียกใช้ฟังก์ชันแสดงผลทันที
-        displayGoldPrice();
-        
-    </script>
-    
-</body>
-</html>
+            const
