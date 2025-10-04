@@ -87,4 +87,41 @@
 
         function displayGoldPrice() {
             const outputElement = document.getElementById('gold-price-output');
-            const
+            const timeElement = document.getElementById('update-time-output');
+            
+            // **ข้อมูลราคาอ้างอิง (Manual Input)**
+            // *เมื่อราคาเปลี่ยน คุณต้องเข้ามาแก้ไขตัวเลข 2 ตัวนี้เอง*
+            const data = {
+                time: "18:30 น.", // อัพเดทเวลาให้ตรงกับที่คุณแก้ไข
+                date: "04/10/2568",
+                gold_bar: {
+                    sell: 59450.00, // ราคาขายออก
+                    buy: 59350.00  // ราคารับซื้อ
+                }
+            };
+
+            const priceOutput = 
+                `<div class="price-item">
+                    <div>
+                        <div class="price-label">ขายออก</div>
+                        <div class="price-value-box sell-price">${formatCurrency(data.gold_bar.sell)}</div>
+                        <div class="price-label">บาท</div>
+                    </div>
+                    <div>
+                        <div class="price-label">รับซื้อ</div>
+                        <div class="price-value-box buy-price">${formatCurrency(data.gold_bar.buy)}</div>
+                        <div class="price-label">บาท</div>
+                    </div>
+                </div>`;
+
+            outputElement.innerHTML = priceOutput;
+            timeElement.innerHTML = `ข้อมูลอ้างอิงล่าสุด: ${data.time} (${data.date})`;
+        }
+
+        // เรียกใช้ฟังก์ชันแสดงผลทันที
+        displayGoldPrice();
+        
+    </script>
+    
+</body>
+</html>
